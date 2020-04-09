@@ -47,7 +47,8 @@ const drawTable = async () => {
 const addNewContact = async () => {
   let newContact = readLine.question('Name: ');
   let newNumber = readLine.question('Phone number: ');
-  await knex.insert([{contacts: newContact, phoneNumber: newNumber}]).into(tableName);
+  await knex.insert([{contacts: newContact, phoneNumber: newNumber}])
+  .into(tableName);
   drawTable();
 }
 
@@ -69,7 +70,9 @@ const modifyContactName = async () => {
 
 const deleteContact = async () => {
   const deleteName = readLine.question('Name of the contact you would like to delete: ');
-  await knex(tableName).where('phoneRegister.contacts', deleteName).del();
+  await knex(tableName)
+  .where('phoneRegister.contacts', deleteName)
+  .del();
 }
 
 const searchContact = async () => {
